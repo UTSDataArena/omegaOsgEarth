@@ -7,8 +7,8 @@ if(OMEGA_BUILD_OSG_LIB)
     #add_subdirectory(apps/osgviewer)
 	
 	#add osgBullet into include
-    #include(external/UseOsgBullet.cmake)
-    #include_directories(${OSGBULLET_INCLUDES})
+    include(external/UseOsgEarth.cmake)
+    include_directories(${OSGEARTH_INCLUDES})
 
     #add_subdirectory(apps/osgbCollision)
     #add_subdirectory(apps/osgbBasicDemo)
