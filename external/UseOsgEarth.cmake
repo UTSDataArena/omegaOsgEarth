@@ -12,7 +12,6 @@ if(WIN32)
 else()
     set(OSGEARTH_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DOSGWORKS_STATIC")
 endif()
-
 if(WIN32)
 	ExternalProject_Add(
 		osgearth
@@ -93,13 +92,14 @@ elseif(APPLE)
 			-DCMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG:PATH=${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}
 			-DCMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE:PATH=${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}
 
-			-DOSGInstallType:STRING=${OsgInstallType}
-			-DOSGSourceRoot:STRING=${CMAKE_BINARY_DIR}/modules/omegaOsg/osg-prefix/src/osg
-			-DOSGBuildRoot:STRING=${CMAKE_BINARY_DIR}/modules/omegaOsg/osg-prefix/src/osg-build
+            #-DOSGInstallType:STRING=${OsgInstallType}
+            #-DOSGSourceRoot:STRING=${CMAKE_BINARY_DIR}/modules/omegaOsg/osg-prefix/src/osg
+            #-DOSGBuildRoot:STRING=${CMAKE_BINARY_DIR}/modules/omegaOsg/osg-prefix/src/osg-build
 			
 			# Bild a shared lib on linux, or linking with apps will fail (why? Because little
 			# gnomes live in your computer to make your life miserable)
 			-DBUILD_SHARED_LIBS:BOOLEAN=false
+            -DOSGEARTH_USE_QT=OFF
             #-DOSGBULLET_BUILD_APPLICATIONS=OFF
             #-DOSGBULLET_BUILD_EXAMPLES=OFF
             #-DOSGBULLET_INSTALL_DATA=OFF
@@ -109,42 +109,56 @@ elseif(APPLE)
             #-DBulletBuildRoot:PATH=${CMAKE_BINARY_DIR}/modules/omegaOsg/bullet-prefix/src/bullet-build
 			#osgWorks
             #-DosgWorks_DIR:PATH=${CMAKE_BINARY_DIR}/modules/omegaOsg/osgWorks-prefix/src/osgWorks-build/lib
-			#osg
-			-DOSG_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSG_LIBRARY:PATH=${osg_LIBRARY}
-			-DOSG_LIBRARY_DEBUG:PATH=${osg_LIBRARY_DEBUG}
+            -DOSG_DIR:PATH=${OSG_INSTALL_DIR}
+            #osg
+            #-DOSG_INCLUDE_DIR:PATH=${OSG_INSTALL_DIR}/include
+            #-DOSG_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSG_LIBRARY:PATH=${osg_LIBRARY}
+            #-DOSG_LIBRARY_DEBUG:PATH=${osg_LIBRARY_DEBUG}
 			#osgGA
-			-DOSGGA_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGGA_LIBRARY:PATH=${osgGA_LIBRARY}
-			-DOSGGA_LIBRARY_DEBUG:PATH=${osgGA_LIBRARY_DEBUG}
+            #-DOSGGA_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGGA_LIBRARY:PATH=${osgGA_LIBRARY}
+            #-DOSGGA_LIBRARY_DEBUG:PATH=${osgGA_LIBRARY_DEBUG}
 			#osgText
-			-DOSGTEXT_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGTEXT_LIBRARY:PATH=${osgText_LIBRARY}
-			-DOSGTEXT_LIBRARY_DEBUG:PATH=${osgText_LIBRARY_DEBUG}
+            #-DOSGTEXT_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGTEXT_LIBRARY:PATH=${osgText_LIBRARY}
+            #-DOSGTEXT_LIBRARY_DEBUG:PATH=${osgText_LIBRARY_DEBUG}
 			#osgViewer
-			-DOSGVIEWER_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGVIEWER_LIBRARY:PATH=${osgViewer_LIBRARY}
-			-DOSGVIEWER_LIBRARY_DEBUG:PATH=${osgViewer_LIBRARY_DEBUG}
+            #-DOSGVIEWER_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGVIEWER_LIBRARY:PATH=${osgViewer_LIBRARY}
+            #-DOSGVIEWER_LIBRARY_DEBUG:PATH=${osgViewer_LIBRARY_DEBUG}
 			#osgSim
-			-DOSGSIM_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGSIM_LIBRARY:PATH=${osgSim_LIBRARY}
-			-DOSGSIM_LIBRARY_DEBUG:PATH=${osgSim_LIBRARY_DEBUG}
+            #-DOSGSIM_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGSIM_LIBRARY:PATH=${osgSim_LIBRARY}
+            #-DOSGSIM_LIBRARY_DEBUG:PATH=${osgSim_LIBRARY_DEBUG}
 			#osgDB
-			-DOSGDB_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGDB_LIBRARY:PATH=${osgDB_LIBRARY}
-			-DOSGDB_LIBRARY_DEBUG:PATH=${osgDB_LIBRARY_DEBUG}
+            #-DOSGDB_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGDB_LIBRARY:PATH=${osgDB_LIBRARY}
+            #-DOSGDB_LIBRARY_DEBUG:PATH=${osgDB_LIBRARY_DEBUG}
 			#osgUtil
-			-DOSGUTIL_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGUTIL_LIBRARY:PATH=${osgUtil_LIBRARY}
-			-DOSGUTIL_LIBRARY_DEBUG:PATH=${osgUtil_LIBRARY_DEBUG}
+            #-DOSGUTIL_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGUTIL_LIBRARY:PATH=${osgUtil_LIBRARY}
+            #-DOSGUTIL_LIBRARY_DEBUG:PATH=${osgUtil_LIBRARY_DEBUG}
 			#osgShadow
-			-DOSGSHADOW_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOSGSHADOW_LIBRARY:PATH=${osgShadow_LIBRARY}
-			-DOSGSHADOW_LIBRARY_DEBUG:PATH=${osgShadow_LIBRARY_DEBUG}
-			#openthreads
-			-DOPENTHREADS_INCLUDE_DIR:PATH=${OSG_INCLUDES}
-			-DOPENTHREADS_LIBRARY:PATH=${OpenThreads_LIBRARY}
-			-DOPENTHREADS_LIBRARY_DEBUG:PATH=${OpenThreads_LIBRARY_DEBUG}
+            #-DOSGSHADOW_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOSGSHADOW_LIBRARY:PATH=${osgShadow_LIBRARY}
+            #-DOSGSHADOW_LIBRARY_DEBUG:PATH=${osgShadow_LIBRARY_DEBUG}
+            #osgFX
+            #-DOSGFX_LIBRARY:PATH=${osgFX_LIBRARY}
+            #-DOSGFX_LIBRARY_DEBUG:PATH=${osgFX_LIBRARY_DEBUG}
+            #osgTerrain
+            #-DOSGTERRAIN_LIBRARY:PATH=${osgTerrain_LIBRARY}
+            #-DOSGTERRAIN_LIBRARY_DEBUG:PATH=${osgTerrain_LIBRARY_DEBUG}
+            #osgTerrain
+            #-DOSGMANIPULATOR_LIBRARY:PATH=${osgManipulator_LIBRARY}
+            #-DOSGMANIPULATOR_LIBRARY_DEBUG:PATH=${osgManipulator_LIBRARY_DEBUG}
+            #osgWidget
+            #-DOSGWIDGET_LIBRARY:PATH=${osgWidget_LIBRARY}
+            #-DOSGWIDGET_LIBRARY_DEBUG:PATH=${osgWidget_LIBRARY_DEBUG}
+            #openthreads
+            #-DOPENTHREADS_INCLUDE_DIR:PATH=${OSG_INCLUDES}
+            #-DOPENTHREADS_LIBRARY:PATH=${OpenThreads_LIBRARY}
+            #-DOPENTHREADS_LIBRARY_DEBUG:PATH=${OpenThreads_LIBRARY_DEBUG}
 			INSTALL_COMMAND ""
 		)
 else()
@@ -248,5 +262,6 @@ if(WIN32)
 	add_definitions(-DOSGEARTH_STATIC)
 endif()
 
+include_directories(${OSG_INCLUDES})
 # NOTE: setting the OSGEARTH_LIBS as an internal cache variable, makes it accessible to other modules.
 set(OSGEARTH_LIBS ${OSGEARTH_LIBRARIES} ${OSGEARTH_LIBS} CACHE INTERNAL "")
