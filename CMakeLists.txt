@@ -7,7 +7,7 @@ include_directories(${OSG_INCLUDES})
 #add_subdirectory(src)
 #add_subdirectory(apps/osgviewer)
 
-#add osgBullet into include
+include(external/UseGDAL.cmake)
 include(external/UseOsgEarth.cmake)
 include_directories(${OSGEARTH_INCLUDES})
 
