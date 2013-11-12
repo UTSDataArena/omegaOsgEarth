@@ -23,11 +23,11 @@ set(OSGEARTH_ARGS
      -DGDAL_INCLUDE_DIR=${GDAL_INCLUDE_DIR}
      -DGDAL_LIBRARY=${GDAL_LIBRARY}
 )
-   
+
 if(WIN32)
     set(OSGEARTH_ARGS
         -DCMAKE_SHARED_LINKER_FLAGS:STRING="${CMAKE_SHARED_LINKER_FLAGS} /NODEFAULTLIB:msvcprt.lib /NODEFAULTLIB:libcpmt.lib"
-		-DCMAKE_LINKER_FLAGS:STRING="${CMAKE_LINKER_FLAGS} /NODEFAULTLIB:libcpmt.lib /NODEFAULTLIB:msvcprt.lib"
+		    -DCMAKE_LINKER_FLAGS:STRING="${CMAKE_LINKER_FLAGS} /NODEFAULTLIB:libcpmt.lib /NODEFAULTLIB:msvcprt.lib"
         ${OSGEARTH_ARGS}
     )
 endif(WIN32)
@@ -42,7 +42,7 @@ ExternalProject_Add(
     INSTALL_COMMAND ""
 )
 
-set_target_properties(osgearth PROPERTIES FOLDER "3rdparty")
+#set_target_properties(osgearth PROPERTIES FOLDER "3rdparty")
 
 #set(OSGEARTH_BASE_DIR ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/osgearth-prefix/src)
 # NOTE: setting the OSGEARTH_INCLUDES as an internal cache variable, makes it accessible to other modules.
