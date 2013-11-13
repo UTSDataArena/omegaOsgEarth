@@ -25,7 +25,13 @@ ExternalProject_Add(
 
 set(GDAL_INCLUDE_DIR ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/gdal-prefix/src/gdal-install/include CACHE INTERNAL "")
 # NOTE: setting the GDAL_INCLUDES as an internal cache variable, makes it accessible to other modules.
-set(GDAL_LIBRARY  ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/gdal-prefix/src/gdal-install/lib/libgdal.so CACHE INTERNAL "")
+if(APPLE)
+    set(LIB_SUFFIX dylib)
+else()
+    set(LIB_SUFFIX so)
+endif()
+
+set(GDAL_LIBRARY  ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/gdal-prefix/src/gdal-install/lib/libgdal.${LIB_SUFFIX} CACHE INTERNAL "")
 
 #set(GDAL_LIB_DIR ${GDAL_BASE_DIR}/osgearth-build/lib)
 
