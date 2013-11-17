@@ -13,13 +13,6 @@ ExternalProject_Add(
 
 ExternalProject_Get_Property(netcdf SOURCE_DIR)
 
-  #if(NOT EXISTS ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/${NETCDF_TGZ})
-  #file(DOWNLOAD ftp://ftp.unidata.ucar.edu/pub/netcdf/${NETCDF_TGZ} ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/${NETCDF_TGZ} SHOW_PROGRESS)
-  #endif()
-
-  #if(NOT EXISTS ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/${NETCDF})
-  #execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzvf ${NETCDF_TGZ} WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth)
-  #endif()
 if(WIN32)
 	# On windows we are lazy. Just download precompiled libs. 
 	# This is specific to Visual Studio 2010, Win32.
@@ -30,10 +23,9 @@ if(WIN32)
 	set(EXTLIB_DIR ${CMAKE_BINARY_DIR}/gdal)
 	
 	if(NOT EXISTS ${EXTLIB_DIR})
-	  message(STATUS "Downloading GDAL library")
-	  file(DOWNLOAD "http://www.gisinternals.com/sdk/Download.aspx?file=release-1600-gdal-1-10-1-mapserver-6-4-0-libs.zip" ${EXTLIB_TGZ} SHOW_PROGRESS)
-	  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf
-		${EXTLIB_TGZ} WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+		message(STATUS "Downloading GDAL library")
+		file(DOWNLOAD "https://omegalib.googlecode.com/files/gdal.tar.gz" ${EXTLIB_TGZ} SHOW_PROGRESS)
+		execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${EXTLIB_TGZ} WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 	endif(NOT EXISTS ${EXTLIB_DIR})
 	
 	set(GDAL_INCLUDE_DIR ${EXTLIB_DIR}/include CACHE INTERNAL "")
