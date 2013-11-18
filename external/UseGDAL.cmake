@@ -11,6 +11,8 @@ ExternalProject_Add(
   INSTALL_COMMAND ""
 )
 
+set_target_properties(netcdf PROPERTIES FOLDER "modules/omegaOsgEarth")
+
 ExternalProject_Get_Property(netcdf SOURCE_DIR)
 
 if(WIN32)
@@ -56,3 +58,4 @@ else()
 endif()
 
 
+set_target_properties(gdal PROPERTIES FOLDER "modules/omegaOsgEarth")
