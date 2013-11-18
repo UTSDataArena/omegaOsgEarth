@@ -112,8 +112,8 @@ endif(WIN32)
 ExternalProject_Add(
     osgearth
     DEPENDS osg gdal
-    #GIT_REPOSITORY https://github.com/gwaldron/osgearth.git
-	URL https://omegalib.googlecode.com/files/osgearth-10db273f4f.tar.gz
+    GIT_REPOSITORY https://github.com/gwaldron/osgearth.git
+    GIT_TAG c446b57a235d91de0564c314ffd8ea00daedf50b
     CMAKE_GENERATOR ${OSGEARTH_GENERATOR}
     CMAKE_ARGS
         ${OSGEARTH_ARGS}
