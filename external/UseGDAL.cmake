@@ -35,6 +35,9 @@ if(WIN32)
 	
 	# create phony target gdal
 	add_custom_target(gdal)
+	# Copy the dlls into the target directories
+	file(COPY ${EXTLIB_DIR}/bin/ DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG} PATTERN "*.dll")
+	file(COPY ${EXTLIB_DIR}/bin/ DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE} PATTERN "*.dll")
 else()
 	ExternalProject_Add(
 		gdal
