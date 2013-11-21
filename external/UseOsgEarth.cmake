@@ -1,16 +1,7 @@
-# Add external project osgBullet
-# Pro Trick here: we can't pass the string directly as a CMAKE_ARG in 
-# ExternalProject_Add, because it would keep the double quotes, and we
-# do not want them. Passing it as a variable removes the dobule quotes.
-#set(BulletInstallType "Source And Build Tree")
-#set(OsgInstallType "Source And Build Tree")
-
-# The OSGWORKS_STATIC preprocessor definition tells osgBullet that
-# we are using the static version of osgWorks.
-set(OSGEARTH_GENERATOR ${CMAKE_GENERATOR})
+set(OMEGA_OSG_ENABLE_COLLADA_DOM true CACHE BOOL "" FORCE)
 
 set(OSGEARTH_ARGS
-	   -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+	 -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
      -DCMAKE_RUNTIME_OUTPUT_DIRECTORY:PATH=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0
      -DCMAKE_RUNTIME_OUTPUT_DIRECTORY:PATH=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0
      -DCMAKE_LIBRARY_OUTPUT_DIRECTORY:PATH=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0
@@ -21,6 +12,8 @@ set(OSGEARTH_ARGS
      -DOSG_DIR:PATH=${OSG_INSTALL_DIR}
      -DGDAL_INCLUDE_DIR=${GDAL_INCLUDE_DIR}
      -DGDAL_LIBRARY=${GDAL_LIBRARY}
+     -DMINIZIP_INCLUDE_DIR=${MINIZIP_INCLUDE_DIR}
+     -DMINIZIP_LIBRARY=${MINIZIP_LIBRARY}
 )
 
 if(WIN32)
@@ -111,10 +104,9 @@ endif(WIN32)
 
 ExternalProject_Add(
     osgearth
-    DEPENDS osg gdal
+    DEPENDS osg gdal minizip
     GIT_REPOSITORY https://github.com/gwaldron/osgearth.git
     GIT_TAG c446b57a235d91de0564c314ffd8ea00daedf50b
-    CMAKE_GENERATOR ${OSGEARTH_GENERATOR}
     CMAKE_ARGS
         ${OSGEARTH_ARGS}
     INSTALL_COMMAND ""
