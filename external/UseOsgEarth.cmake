@@ -108,9 +108,14 @@ if(WIN32)
     )
 endif(WIN32)
 
+set(OSGEARTH_DEPENDS osg gdal)
+if(OMEGA_OSG_ENABLE_COLLADA_DOM)
+	set(OSGEARTH_DEPENDS ${OSGEARTH_DEPENDS} minizip)
+endif()
+
 ExternalProject_Add(
     osgearth
-    DEPENDS osg gdal minizip
+    DEPENDS ${OSGEARTH_DEPENDS}
     URL https://omegalib.googlecode.com/files/osgearth-10db273f4f.tar.gz
     CMAKE_ARGS
         ${OSGEARTH_ARGS}
