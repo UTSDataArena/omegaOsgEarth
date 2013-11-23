@@ -2,7 +2,7 @@
 
 request_dependency(omegaOsg)
 
-set(_OMEGA_OSG_ENABLE_COLLADA_DOM true CACHE INTERNAL "")
+#set(_OMEGA_OSG_ENABLE_COLLADA_DOM true CACHE INTERNAL "")
 
 #include(${CMAKE_SOURCE_DIR}/modules/omegaOsg/external/UseOpenSceneGraph.cmake)
 include_directories(.)
