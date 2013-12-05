@@ -127,10 +127,29 @@ set_target_properties(osgearth PROPERTIES FOLDER "modules/omegaOsgEarth")
 
 #set_target_properties(osgearth PROPERTIES FOLDER "3rdparty")
 
-#set(OSGEARTH_BASE_DIR ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/osgearth-prefix/src)
+set(OSGEARTH_BASE_DIR ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/osgearth-prefix/src)
 # NOTE: setting the OSGEARTH_INCLUDES as an internal cache variable, makes it accessible to other modules.
-#set(OSGEARTH_INCLUDES ${OSGEARTH_INCLUDES} ${OSGEARTH_BASE_DIR}/osgEarth/include CACHE INTERNAL "")
+set(OSGEARTH_INCLUDES ${OSGEARTH_BASE_DIR}/osgEarth/src CACHE INTERNAL "")
 
-#set(OSGEARTH_LIB_DIR ${OSGEARTH_BASE_DIR}/osgearth-build/lib)
-
-#include_directories(${OSG_INCLUDES})
+set(OSGEARTH_COMPONENTS osgEarth osgEarthAnnotation osgEarthFeatures osgEarthSymbology osgEarthUtil)
+if(OMEGA_OS_WIN)
+    foreach( C ${OSGEARTH_COMPONENTS} )
+        set(${C}_LIBRARY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE}/osg/osgPlugins-3.3.0/${C}.lib CACHE INTERNAL "")
+        set(${C}_LIBRARY_DEBUG ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG}/osg/osgPlugins-3.3.0/${C}d.lib CACHE INTERNAL "")
+        set(OSGEARTH_LIBS ${OSGEARTH_LIBS} optimized ${${C}_LIBRARY} debug ${${C}_LIBRARY_DEBUG} CACHE INTERNAL "")
+    endforeach()
+elseif(OMEGA_OS_LINUX)
+	# Linux
+    foreach( C ${OSGEARTH_COMPONENTS} )
+		set(${C}_LIBRARY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0/lib${C}.so)
+		set(${C}_LIBRARY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0/lib${C}d.so)
+        set(OSGEARTH_LIBS ${OSGEARTH_LIBS} optimized ${${C}_LIBRARY} debug ${${C}_LIBRARY_DEBUG} CACHE INTERNAL "")
+  endforeach()
+else()
+	# OSX
+    foreach( C ${OSGEARTH_COMPONENTS} )
+		set(${C}_LIBRARY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0/lib${C}.dylib)
+		set(${C}_LIBRARY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/osg/osgPlugins-3.3.0/lib${C}d.dylib)
+        set(OSGEARTH_LIBS ${OSGEARTH_LIBS} optimized ${${C}_LIBRARY} debug ${${C}_LIBRARY_DEBUG} CACHE INTERNAL "")
+	endforeach()
+endif()
