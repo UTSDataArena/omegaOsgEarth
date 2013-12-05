@@ -129,7 +129,7 @@ set_target_properties(osgearth PROPERTIES FOLDER "modules/omegaOsgEarth")
 
 set(OSGEARTH_BASE_DIR ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/osgearth-prefix/src)
 # NOTE: setting the OSGEARTH_INCLUDES as an internal cache variable, makes it accessible to other modules.
-set(OSGEARTH_INCLUDES ${OSGEARTH_BASE_DIR}/osgEarth/src CACHE INTERNAL "")
+set(OSGEARTH_INCLUDES ${OSGEARTH_BASE_DIR}/osgearth/src CACHE INTERNAL "")
 
 set(OSGEARTH_COMPONENTS osgEarth osgEarthAnnotation osgEarthFeatures osgEarthSymbology osgEarthUtil)
 if(OMEGA_OS_WIN)
