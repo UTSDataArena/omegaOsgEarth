@@ -65,7 +65,7 @@ else()
     ExternalProject_Add(
         netcdf
         DEPENDS hdf5 proj4
-        URL "ftp://ftp.unidata.ucar.edu/pub/netcdf/${NETCDF_TGZ}"
+        URL "http://omegalib.googlecode.com/files/${NETCDF_TGZ}"
         CMAKE_ARGS
           -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
           -DBUILD_SHARED_LIBS=ON
