@@ -12,3 +12,4 @@ include(external/UseOsgEarth.cmake)
 
 ###############################################################################
 # Install commands
+install(DIRECTORY examples/ DESTINATION omegalib/examples/omegaOsgEarth)
