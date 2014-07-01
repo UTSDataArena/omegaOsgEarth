@@ -11,7 +11,7 @@ scene.loadModel(torusModel)
 
 # Create a scene object using the loaded model
 torus = StaticObject.create("torus")
-torus.setEffect("colored")
+#torus.setEffect("colored")
 setNearFarZ(1, 2 * torus.getBoundRadius())
 
 # Load a kmz file
