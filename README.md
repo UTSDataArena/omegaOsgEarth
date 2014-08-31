@@ -23,3 +23,6 @@ This happens if you already have a PROJ.4 installed on your system and the versi
 export PROJSO=<path to omegalib build>/bin/libproj.so
 ```
 
+## Examples
+This module contains one basic python example. The cyclops module contains a C++ earth example (see code here: https://github.com/omega-hub/cyclops/tree/master/examples/helloEarth)
+If you have the cyclops module installed, that example will build automatically the first time you build omegaOsgEarth.
