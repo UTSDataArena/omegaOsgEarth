@@ -128,7 +128,7 @@ endif()
 ExternalProject_Add(
     osgearth
     DEPENDS ${OSGEARTH_DEPENDS}
-    URL http://omegalib.googlecode.com/files/osgearth-10db273f4f.tar.gz
+    URL http://omegalib.s3-website-us-west-2.amazonaws.com/omegaOsgEarth/osgearth-10db273f4f-cmake3.tar.gz
     CMAKE_ARGS
         ${OSGEARTH_ARGS}
     INSTALL_COMMAND ""
