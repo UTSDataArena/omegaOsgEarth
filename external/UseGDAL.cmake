@@ -57,7 +57,8 @@ else()
     ExternalProject_Add(
       proj4
       URL "http://download.osgeo.org/proj/proj-4.8.0.tar.gz"
-      CONFIGURE_COMMAND <SOURCE_DIR>/configure
+      #URL "http://download.osgeo.org/proj/proj-4.9.0b2.tar.gz"
+      CONFIGURE_COMMAND <SOURCE_DIR>/configure --with-jni=no
       BUILD_IN_SOURCE 1
       INSTALL_COMMAND cp ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/proj4-prefix/src/proj4/src/.libs/libproj.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     )
@@ -69,6 +70,7 @@ else()
         CMAKE_ARGS
           -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
           -DBUILD_SHARED_LIBS=ON
+          -DENABLE_DAP=OFF
           -DHDF5_DIR:PATH=${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/hdf5-prefix/src/hdf5-build
           -DHDF5_LIBRARIES:PATH=${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/hdf5-prefix/src/hdf5-install/lib/libhdf5.a
           -DHDF5_INCLUDE_DIR=${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/hdf5-prefix/src/hdf5-install/include
