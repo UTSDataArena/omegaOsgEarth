@@ -38,7 +38,7 @@ else()
   else()
     ExternalProject_Add(
       hdf5
-      URL "http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.13.tar.gz"
+      URL "http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.14.tar.gz"
       CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DBUILD_SHARED_LIBS=ON
