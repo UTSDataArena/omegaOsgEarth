@@ -1,7 +1,6 @@
 # Open Scene Graph configuration, libraries and applications
 
 request_dependency(omegaOsg)
-request_dependency(cyclops)
 
 include_directories(.)
 include_directories(${OSG_INCLUDES})
