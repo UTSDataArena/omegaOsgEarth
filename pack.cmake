@@ -1,4 +1,4 @@
-if(OMEGA_OS_WIN)
+if(WIN32)
     file(INSTALL DESTINATION ${PACKAGE_DIR}/bin
         TYPE FILE
         FILES
@@ -37,7 +37,7 @@ if(OMEGA_OS_WIN)
             ${BIN_DIR}/spatialite.dll
             ${BIN_DIR}/sqlite3.dll
             ${BIN_DIR}/ssleay32.dll
-            ${BIN_DIR}/xerves_c_2_8.dll
+            ${BIN_DIR}/xerces-c_2_8.dll
             ${BIN_DIR}/zlib1.dll
         )
         
