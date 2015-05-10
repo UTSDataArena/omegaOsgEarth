@@ -121,25 +121,29 @@ if(OMEGA_OSG_ENABLE_COLLADA_DOM)
 	set(OSGEARTH_DEPENDS ${OSGEARTH_DEPENDS} minizip)
 endif()
 
+set(OSGEARTH_BASE_DIR ${CMAKE_BINARY_DIR}/3rdparty/osgEarth)
+# NOTE: setting the OSGEARTH_INCLUDES as an internal cache variable, makes it accessible to other modules.
+set(OSGEARTH_INCLUDES ${OSGEARTH_BASE_DIR}/source/src CACHE INTERNAL "")
+
 ExternalProject_Add(
     osgearth
     DEPENDS ${OSGEARTH_DEPENDS}
-    URL http://omegalib.s3-website-us-west-2.amazonaws.com/omegaOsgEarth/osgearth-10db273f4f-cmake3.tar.gz
+    URL http://github.com/omega-hub/osgearth/archive/master.tar.gz
     CMAKE_ARGS
         ${OSGEARTH_ARGS}
     INSTALL_COMMAND ""
+    # directories
+    TMP_DIR ${CMAKE_BINARY_DIR}/3rdparty/tmp
+    STAMP_DIR ${CMAKE_BINARY_DIR}/3rdparty/stamp
+    DOWNLOAD_DIR ${OSGEARTH_BASE_DIR}
+    SOURCE_DIR ${OSGEARTH_BASE_DIR}/source
+    BINARY_DIR ${OSGEARTH_BASE_DIR}/build
+    INSTALL_DIR ${OSGEARTH_BASE_DIR}/install
 )
 
-set_target_properties(osgearth PROPERTIES FOLDER "modules/omegaOsgEarth")
+set_target_properties(osgearth PROPERTIES FOLDER "3rdparty")
 
-
-#set_target_properties(osgearth PROPERTIES FOLDER "3rdparty")
-
-set(OSGEARTH_BASE_DIR ${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/osgearth-prefix/src)
-# NOTE: setting the OSGEARTH_INCLUDES as an internal cache variable, makes it accessible to other modules.
-set(OSGEARTH_INCLUDES ${OSGEARTH_BASE_DIR}/osgearth/src CACHE INTERNAL "")
 set(OSGEARTH_LIBS "")
-
 set(OSGEARTH_COMPONENTS osgEarth osgEarthAnnotation osgEarthFeatures osgEarthSymbology osgEarthUtil)
 if(OMEGA_OS_WIN)
     foreach( C ${OSGEARTH_COMPONENTS} )
