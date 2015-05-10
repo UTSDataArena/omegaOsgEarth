@@ -42,3 +42,15 @@ if(WIN32)
             ${BIN_DIR}/zlib1.dll
         )
 endif()
+        
+        # NOTE: we do not copy the osgEarth plugins in the plugin directory because
+        # they are already included in the omegaOsg package.
+endif()
+
+file(INSTALL DESTINATION ${PACKAGE_DIR}/bin
+    TYPE DIRECTORY
+    FILES
+        ${BIN_DIR}/curl
+        ${BIN_DIR}/gdal-data
+        ${BIN_DIR}/proj/SHARE
+    )

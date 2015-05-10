@@ -1,6 +1,6 @@
 # Open Scene Graph configuration, libraries and applications
 request_dependency(omegaOsg)
-request_dependency(cyclops)
+module_version(1.0.1)
 
 module_version(2.0)
 
