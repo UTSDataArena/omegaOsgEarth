@@ -1,7 +1,5 @@
 # Open Scene Graph configuration, libraries and applications
 request_dependency(omegaOsg)
-module_version(1.0.1)
-
 module_version(2.0)
 
 include_directories(.)
