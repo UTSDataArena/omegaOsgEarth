@@ -106,12 +106,12 @@ if(WIN32)
 			-DOSGWIDGET_LIBRARY:PATH=${osgWidget_LIBRARY}
 			-DOSGWIDGET_LIBRARY_DEBUG:PATH=${osgWidget_LIBRARY_DEBUG}
 			#CURL
-			-DCURL_INCLUDE_DIR:PATH=${CMAKE_BINARY_DIR}/gdal/include/curl
-			-DCURL_LIBRARY:PATH=${CMAKE_BINARY_DIR}/gdal/lib/libcurl_imp.lib
-			-DCURL_LIBRARY_DEBUG:PATH=${CMAKE_BINARY_DIR}/gdal/lib/libcurl_imp.lib
+			-DCURL_INCLUDE_DIR:PATH=${CMAKE_BINARY_DIR}/3rdparty/gdal/include/curl
+			-DCURL_LIBRARY:PATH=${CMAKE_BINARY_DIR}/3rdparty/gdal/lib/libcurl_imp.lib
+			-DCURL_LIBRARY_DEBUG:PATH=${CMAKE_BINARY_DIR}/3rdparty/gdal/lib/libcurl_imp.lib
 			#ZLIB
-			-DZLIB_INCLUDE_DIR:PATH=${CMAKE_BINARY_DIR}/gdal/include/
-			-DZLIB_LIBRARY:PATH=${CMAKE_BINARY_DIR}/gdal/lib/zlib.lib
+			-DZLIB_INCLUDE_DIR:PATH=${CMAKE_BINARY_DIR}/3rdparty/gdal/include/
+			-DZLIB_LIBRARY:PATH=${CMAKE_BINARY_DIR}/3rdparty/gdal/lib/zlib.lib
 		${OSGEARTH_ARGS}
     )
 endif(WIN32)
