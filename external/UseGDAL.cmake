@@ -86,7 +86,8 @@ else()
             STAMP_DIR ${CMAKE_BINARY_DIR}/3rdparty/stamp
             DOWNLOAD_DIR ${PROJ4_BASE_DIR}
             SOURCE_DIR ${PROJ4_BASE_DIR}/source
-            BINARY_DIR ${PROJ4_BASE_DIR}/build
+            # Do not use this, since we are using BUILD_IN_SOURCE
+            #BINARY_DIR ${PROJ4_BASE_DIR}/build
             INSTALL_DIR ${PROJ4_BASE_DIR}/install
         )
 
@@ -134,7 +135,8 @@ else()
         STAMP_DIR ${CMAKE_BINARY_DIR}/3rdparty/stamp
         DOWNLOAD_DIR ${GDAL_BASE_DIR}
         SOURCE_DIR ${GDAL_BASE_DIR}/source
-        BINARY_DIR ${GDAL_BASE_DIR}/build
+        # Do not use this, since we are using BUILD_IN_SOURCE
+        #BINARY_DIR ${GDAL_BASE_DIR}/build
         INSTALL_DIR ${GDAL_BASE_DIR}/install
     )
     #ExternalProject_Get_Property(gdal DOWNLOAD_DIR)
