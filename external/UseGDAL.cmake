@@ -127,7 +127,7 @@ else()
         gdal
         DEPENDS netcdf
         URL "http://download.osgeo.org/gdal/1.10.0/gdal-1.10.0.tar.gz"
-        CONFIGURE_COMMAND <SOURCE_DIR>/configure --with-netcdf=${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/netcdf-prefix/src/netcdf-build/liblib --prefix=${CMAKE_BINARY_DIR}/modules/omegaOsgEarth/gdal-prefix/src/gdal-install
+        CONFIGURE_COMMAND <SOURCE_DIR>/configure --with-netcdf=${CMAKE_BINARY_DIR}/3rdparty/netcdf/build/liblib --prefix=${GDAL_BASE_DIR}/install
         BUILD_IN_SOURCE 1
         INSTALL_COMMAND ${PLATFORM_INSTALL_COMMAND}
         # directories
