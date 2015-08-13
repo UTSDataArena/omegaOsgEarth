@@ -49,7 +49,7 @@ else()
         set(HDF5_BASE_DIR ${CMAKE_BINARY_DIR}/3rdparty/hdf5)
         ExternalProject_Add(
             hdf5
-            URL "http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.14.tar.gz"
+            URL "http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.14/src/hdf5-1.8.14.tar.gz"
             CMAKE_ARGS
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
                 -DBUILD_SHARED_LIBS=ON
@@ -80,7 +80,7 @@ else()
             #URL "http://download.osgeo.org/proj/proj-4.9.0b2.tar.gz"
             CONFIGURE_COMMAND <SOURCE_DIR>/configure --with-jni=no
             BUILD_IN_SOURCE 1
-            INSTALL_COMMAND cp PROJ4_BASE_DIR/source/src/.libs/libproj.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+            INSTALL_COMMAND cp ${PROJ4_BASE_DIR}/source/src/.libs/libproj.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
             # directories
             TMP_DIR ${CMAKE_BINARY_DIR}/3rdparty/tmp
             STAMP_DIR ${CMAKE_BINARY_DIR}/3rdparty/stamp
