@@ -10,9 +10,11 @@ include_directories(${OSG_INCLUDES})
 include_directories(${OSGEARTH_INCLUDES})
 
 # Kml loader for the cyclops module
-add_library(KmlLoader MODULE KmlLoader.cpp)
-target_link_libraries(KmlLoader cyclops ${OSGEARTH_LIBS})
-declare_native_module(KmlLoader)
+if(MODULES_cyclops)
+    add_library(KmlLoader MODULE KmlLoader.cpp)
+    target_link_libraries(KmlLoader cyclops ${OSGEARTH_LIBS})
+    declare_native_module(KmlLoader)
+endif()
 
 ###############################################################################
 # Install commands
