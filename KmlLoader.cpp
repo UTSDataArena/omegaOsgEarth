@@ -26,7 +26,7 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////
 // Python wrapper code.
-BOOST_PYTHON_MODULE(pointCloud)
+BOOST_PYTHON_MODULE(KmlLoader)
 {
     PYAPI_REF_CLASS_WITH_CTOR(KmlLoader, ModelLoader);
 }
@@ -34,7 +34,8 @@ BOOST_PYTHON_MODULE(pointCloud)
 ///////////////////////////////////////////////////////////////////////////////
 bool KmlLoader::supportsExtension(const String& ext)
 {
-    if(StringUtils::endsWith(ext, "kml")) return true;
+    if(StringUtils::endsWith(ext, "kml") ||
+        StringUtils::endsWith(ext, "kmz")) return true;
     return false;
 }
 
