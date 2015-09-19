@@ -4,7 +4,7 @@ omegaOsgEarth
 Module for osgEarth in omegalib
 
 ## Building Instruction on Linux / Windows
-No dependencies needed. 
+Required dependencies (gdal, proj4 etc) are included in the build process, so omegaOsgEarth will build everything out of the box.
 
 ## Building Instruction on  Mac OSX
 You will need [HomeBrew](http://mxcl.github.io/homebrew/).
@@ -13,6 +13,15 @@ After HomeBrew is installed, run:
 ```shell
 brew install boost pcre proj
 ```
+
+## Kml/Kmz loading
+To add kml/kmz models to your map, you need to register the Kml model loader provided in this module with the scene manager:
+```
+from KmlLoader import *
+getSceneManager().addLoader(KmlLoader())
+```
+
+**NOTE** kmz file loading is supported only if zlib/minizip libraries are available on your system.
 
 ## Troubleshooting
 If running the basic example `examples/chicago_flat.py` does not display a planar map of the Windy City, the osgEarth plugins have not been found or have failed loading. You can set the environment variable `OSG_NOTIFY_LEVEL=DEBUG` and run the example again to get detailed information on the plugin loading process.
