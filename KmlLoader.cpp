@@ -66,7 +66,6 @@ bool KmlLoader::loadInMap(ModelAsset* asset, ModelAsset* mapAsset)
             osgDB::Options* options = new osgDB::Options;
             options->setOptionString("noTesselateLargePolygons noTriStripPolygons noRotation");
 
-#ifdef omegaOsgEarth_ENABLED
             if(mapAsset)
             {
                 if(StringUtils::endsWith(filePath, ".kml") || StringUtils::endsWith(filePath, ".kmz"))
@@ -77,7 +76,6 @@ bool KmlLoader::loadInMap(ModelAsset* asset, ModelAsset* mapAsset)
                         options->setPluginData("osgEarth::MapNode", mapNode);
                 }
             }
-#endif
 
 
             if(asset->info->buildKdTree)
