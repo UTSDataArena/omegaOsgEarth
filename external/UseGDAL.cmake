@@ -14,7 +14,11 @@ if(WIN32)
 	
 	if(NOT EXISTS ${EXTLIB_DIR})
 		message(STATUS "Downloading GDAL library")
-		file(DOWNLOAD "https://omegalib.googlecode.com/files/gdal.tar.gz" ${EXTLIB_TGZ} SHOW_PROGRESS)
+        if(OMEGA_ARCH_64)
+            file(DOWNLOAD http://omegalib.s3.amazonaws.com/gdal/gdal-x64.tar.gz ${EXTLIB_TGZ} SHOW_PROGRESS)
+        else()
+            file(DOWNLOAD "https://omegalib.googlecode.com/files/gdal.tar.gz" ${EXTLIB_TGZ} SHOW_PROGRESS)
+        endif()
 		execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${EXTLIB_TGZ} WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rdparty)
 	endif(NOT EXISTS ${EXTLIB_DIR})
 	

@@ -1,6 +1,6 @@
 # Open Scene Graph configuration, libraries and applications
 request_dependency(omegaOsg)
-module_version(3.0)
+module_version(3.1)
 
 include(external/UseGDAL.cmake)
 include(external/UseOsgEarth.cmake)
