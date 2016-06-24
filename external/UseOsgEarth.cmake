@@ -114,7 +114,7 @@ set(OSGEARTH_INCLUDES ${OSGEARTH_BASE_DIR}/source/src CACHE INTERNAL "")
 ExternalProject_Add(
     osgearth
     DEPENDS ${OSGEARTH_DEPENDS}
-    URL http://github.com/omega-hub/osgearth/archive/master.tar.gz
+    URL http://github.com/omega-hub/osgearth/archive/0a3203.tar.gz
     CMAKE_ARGS
         ${OSGEARTH_ARGS}
     INSTALL_COMMAND ""
