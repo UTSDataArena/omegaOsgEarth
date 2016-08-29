@@ -1,6 +1,8 @@
 #download netcdf
 set(NETCDF netcdf-4.3.0)
 set(NETCDF_TGZ ${NETCDF}.tar.gz)
+# set(NETCDF_URL "https://omegalib.googlecode.com/files/${NETCDF_TGZ}")
+set(NETCDF_URL "https://github.com/Unidata/netcdf-c/archive/${NETCDF_TGZ}")
 
 
 if(WIN32)
@@ -36,7 +38,7 @@ else()
         set(NETCDF_BASE_DIR ${CMAKE_BINARY_DIR}/3rdparty/netcdf)
         ExternalProject_Add(
             netcdf
-            URL "https://omegalib.googlecode.com/files/${NETCDF_TGZ}"
+            URL "${NETCDF_URL}"
             CONFIGURE_COMMAND ""
             BUILD_COMMAND ""
             INSTALL_COMMAND ""
