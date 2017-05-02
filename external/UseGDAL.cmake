@@ -132,7 +132,7 @@ else()
     ExternalProject_Add(
         gdal
         DEPENDS netcdf
-        URL "http://download.osgeo.org/gdal/1.11.1/gdal-1.11.1.tar.gz"
+        URL "http://download.osgeo.org/gdal/1.11.5/gdal-1.11.5.tar.gz"
         CONFIGURE_COMMAND <SOURCE_DIR>/configure --with-netcdf=${CMAKE_BINARY_DIR}/3rdparty/netcdf/build/liblib --prefix=${GDAL_BASE_DIR}/install
         BUILD_IN_SOURCE 1
         INSTALL_COMMAND ${PLATFORM_INSTALL_COMMAND}
