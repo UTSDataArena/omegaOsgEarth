@@ -133,6 +133,8 @@ else()
         gdal
         DEPENDS netcdf
         URL "http://download.osgeo.org/gdal/1.11.5/gdal-1.11.5.tar.gz"
+	# Work with Jasper 2.x (http://osgeo-org.1560.x6.nabble.com/gdal-dev-jpeg2000-jasper-error-compiling-gdal-2-1-from-git-release-branch-td5299100.html)
+        PATCH_COMMAND sed -ri "s|(stream->bufbase_ = JAS_CAST)([^;]+)|\\1(unsigned char*, buf)|" "${GDAL_BASE_DIR}/source/frmts/jpeg2000/jpeg2000_vsil_io.cpp"
         CONFIGURE_COMMAND <SOURCE_DIR>/configure --with-netcdf=${CMAKE_BINARY_DIR}/3rdparty/netcdf/build/liblib --prefix=${GDAL_BASE_DIR}/install
         BUILD_IN_SOURCE 1
         INSTALL_COMMAND ${PLATFORM_INSTALL_COMMAND}
